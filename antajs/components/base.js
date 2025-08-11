@@ -1,5 +1,5 @@
 let fetchData = null;
-await fetch("../antajs/base.json")
+await fetch("https://raw.githubusercontent.com/rfelixd/AntaJS/main/antajs/base.json")
   .then((response) => {
     if (!response.ok) {
       throw new Error(`error, status: ${response.status}`);
@@ -13,7 +13,7 @@ await fetch("../antajs/base.json")
     console.error("Error fetching config:", error);
   });
 let configData = null;
-await fetch("../antajs/config.json")
+await fetch("https://raw.githubusercontent.com/rfelixd/AntaJS/main/antajs/config.json")
   .then((response) => {
     if (!response.ok) {
       throw new Error(`error, status: ${response.status}`);
@@ -70,3 +70,4 @@ export class Base extends HTMLElement {
     base.appendChild(slots);
   }
 }
+
