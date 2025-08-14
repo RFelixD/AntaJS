@@ -22,18 +22,22 @@
         </div>
       </div>
     </div>
-    <b-base>
-      <g-grid columns="2">
-        <b-button ui="secondary"></b-button>
-      </g-grid>
-    </b-base>
+    <div id="content" style="display: none">
+      <b-base>
+        <g-grid columns="2">
+          <b-button ui="secondary"></b-button>
+        </g-grid>
+      </b-base>
+    </div>
 
     <script type="module" src="antajs/anta.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const loader = document.getElementById("loader-wrapper");
+        const content = document.getElementById("content");
         if (loader) {
           loader.style.display = "none";
+          content.style.display = "block";
         }
       });
     </script>
