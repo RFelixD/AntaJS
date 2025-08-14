@@ -4,14 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="antajs/anta.css" />
+    <link rel="stylesheet" href="antajs/css/preloader.css" />
   </head>
   <body>
+    <div id="loader-wrapper">
+      <div>
+        <div id="loader"></div>
+        <div
+          style="
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: large;
+            color: grey;
+            margin: 2rem;
+          "
+        >
+          Load content please wait
+        </div>
+      </div>
+    </div>
     <b-base>
       <g-grid columns="2">
-        <b-button ui="secondary"
-          ><div class="bg-loader"><div class="loader"></div></div
-        ></b-button>
+        <b-button ui="secondary"></b-button>
       </g-grid>
     </b-base>
 

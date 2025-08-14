@@ -10,3 +10,7 @@ customElements.define("b-button", Button);
 customElements.define("c-card", Card);
 customElements.define("s-searchbar", SearchBar);
 customElements.define("g-grid", Grid);
+
+if (document.getElementById("loader-wrapper")) {
+  document.getElementById("loader-wrapper").style.display = "none";
+}
