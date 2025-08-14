@@ -9,6 +9,7 @@ export class Button extends Base {
     customAttribute.set("text", "Click Me!");
     customAttribute.set("padding", this.padding);
     customAttribute.set("border-radius", this.borderRadius);
+    customAttribute.set("width", "100%");
     customAttribute.set("margin", this.margin);
     customAttribute.set("ui", "primary");
 
@@ -26,8 +27,7 @@ export class Button extends Base {
       style.textContent = `
             :host {
                 display: block;
-                width: 100%;
-                margin: ${customAttribute.get("margin")};
+                width: ${customAttribute.get("width")};
                 font-family: Arial, sans-serif;
                 font-size: 1rem;
                 text-align: center;
@@ -35,7 +35,7 @@ export class Button extends Base {
             .primary {
                 padding: ${customAttribute.get("padding")};
                 background-color: ${this._1};
-                width: 100%;
+                width: ${customAttribute.get("width")};
                 color: white;
                 border: none;
                 border-radius: ${this.borderRadius};
@@ -52,8 +52,7 @@ export class Button extends Base {
       style.textContent = `
             :host {
                 display: block;
-                width: 100%;
-                margin: ${customAttribute.get("margin")};
+                width: ${customAttribute.get("width")};
                 font-family: Arial, sans-serif;
                 font-size: 1rem;
                 text-align: center;
@@ -63,7 +62,7 @@ export class Button extends Base {
                 background-color: ${this.pure};
                 border: 1px solid ${this._1};
                 border-radius: ${this.borderRadius};
-                width: 100%;
+                width: ${customAttribute.get("width")};
                 color: ${this.dark};
                 cursor: pointer;
                 transition: ${this.transition};

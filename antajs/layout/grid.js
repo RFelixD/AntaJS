@@ -30,3 +30,33 @@ export class Grid extends HTMLElement {
     shadow.appendChild(document.createElement("slot"));
   }
 }
+export class Cell extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    const shadow = this.attachShadow({ mode: "open" });
+    const style = document.createElement("style");
+    const customAttribute = new Map();
+    customAttribute.set("col", " 1 / span 1");
+    customAttribute.set("row", "1 / span 1");
+    customAttribute.forEach((value, key) => {
+      if (
+        this.hasAttribute(key) &&
+        this.getAttribute(key) !== null &&
+        this.getAttribute(key) != ""
+      ) {
+        customAttribute.set(key, this.getAttribute(key));
+      }
+    });
+    style.textContent = `
+      :host {
+        display: block;
+        grid-column: ${customAttribute.get("col")};
+        grid-row: ${customAttribute.get("row")};
+      }
+    `;
+    shadow.appendChild(style);
+    shadow.appendChild(document.createElement("slot"));
+  }
+}
