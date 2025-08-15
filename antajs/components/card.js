@@ -22,15 +22,28 @@ export class Card extends Base {
     card.classList.add("card");
 
     const cardContent = new Map();
+    cardContent.set("image", "");
     cardContent.set("header", "");
     cardContent.set("body", "");
     cardContent.set("footer", "");
+    let isImageExists = false;
     cardContent.forEach((value, key) => {
       if (
         this.hasAttribute(key) &&
         this.getAttribute(key) !== null &&
         this.getAttribute(key) != ""
       ) {
+        if (this.getAttribute(key) !== "") {
+          isImageExists = true;
+          card.innerHTML += `<div class="${key}"><img src="${this.getAttribute(
+            key
+          )}" alt="${key}"></div>`;
+        }
+        if (key == "header" && !isImageExists) {
+          card.innerHTML += `<div class="${key}">${this.getAttribute(
+            key
+          )}</div>`;
+        }
         cardContent.set(key, this.getAttribute(key));
         if (key == "body") {
           card.innerHTML += `<div class="${key}"><div>${cardContent.get(

@@ -25,6 +25,9 @@ export class Button extends Base {
     button.textContent = customAttribute.get("text");
     if (customAttribute.get("ui") == "primary") {
       style.textContent = `
+            button {
+              -webkit-tap-highlight-color: transparent;
+             }
             :host {
                 display: block;
                 width: ${customAttribute.get("width")};
@@ -50,6 +53,9 @@ export class Button extends Base {
       button.classList.add("primary");
     } else if (customAttribute.get("ui") == "secondary") {
       style.textContent = `
+             button {
+              -webkit-tap-highlight-color: transparent;
+             }
             :host {
                 display: block;
                 width: ${customAttribute.get("width")};
