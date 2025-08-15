@@ -38,19 +38,22 @@ export class Card extends Base {
           card.innerHTML += `<div class="${key}"><img src="${this.getAttribute(
             key
           )}" alt="${key}"></div>`;
+          return;
         }
         if (key == "header" && !isImageExists) {
           card.innerHTML += `<div class="${key}">${this.getAttribute(
             key
           )}</div>`;
+          return;
         }
-        cardContent.set(key, this.getAttribute(key));
         if (key == "body") {
           card.innerHTML += `<div class="${key}"><div>${cardContent.get(
             key
           )}</div><slot></slot></div>`;
+          return;
         } else {
           card.innerHTML += `<div class="${key}">${cardContent.get(key)}</div>`;
+          return;
         }
       }
     });
