@@ -8,7 +8,6 @@ export class Card extends Base {
   connectedCallback() {
     const shadow = this.attachShadow({ mode: "open" });
     const customAttribute = new Map();
-    customAttribute.set("padding", this.padding);
     customAttribute.set("border-radius", this.borderRadius);
     customAttribute.set("margin", this.margin);
 
@@ -29,9 +28,10 @@ export class Card extends Base {
     let isImageExists = false;
     cardContent.forEach((value, key) => {
       if (
-        this.hasAttribute(key) &&
-        this.getAttribute(key) !== null &&
-        this.getAttribute(key) != ""
+        (this.hasAttribute(key) &&
+          this.getAttribute(key) !== null &&
+          this.getAttribute(key) != "") ||
+        key == "body"
       ) {
         if (this.getAttribute(key) !== "" && key == "image") {
           isImageExists = true;
@@ -47,9 +47,9 @@ export class Card extends Base {
           return;
         }
         if (key == "body") {
-          card.innerHTML += `<div class="${key}"><div>${cardContent.get(
+          card.innerHTML += `<div class="${key}"><div>${this.getAttribute(
             key
-          )}</div><slot></slot></div>`;
+          )}</div><div><slot></slot></div></div>`;
           return;
         } else {
           card.innerHTML += `<div class="${key}">${cardContent.get(key)}</div>`;
@@ -63,7 +63,7 @@ export class Card extends Base {
       :host {
         display: block;
         width: 100%;
-        margin: ${customAttribute.get("margin")};
+        margin: 0.1rem;
         font-family: Arial, sans-serif;
         font-size: 1rem;
       }
@@ -73,19 +73,18 @@ export class Card extends Base {
      .header {
         background-color: ${this._1};
         color: ${this.pure};
-        margin: ${customAttribute.get("margin")};
-        padding: ${customAttribute.get("padding")};
+        padding: 0.75rem;
         border-radius: ${customAttribute.get(
           "border-radius"
         )} ${customAttribute.get("border-radius")} 0 0;
      }
     .body {
-        padding: ${customAttribute.get("padding")};
+        padding: 2px 4px
     }
     .footer{
         background-color: ${this._1};
         color: ${this.pure};
-        padding: ${customAttribute.get("padding")};
+        padding: 2px 4px;
         border-radius: 0 0 ${customAttribute.get(
           "border-radius"
         )} ${customAttribute.get("border-radius")};
