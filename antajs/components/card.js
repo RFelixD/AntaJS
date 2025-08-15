@@ -33,7 +33,7 @@ export class Card extends Base {
         this.getAttribute(key) !== null &&
         this.getAttribute(key) != ""
       ) {
-        if (this.getAttribute(key) !== "") {
+        if (this.getAttribute(key) !== "" && key == "image") {
           isImageExists = true;
           card.innerHTML += `<div class="${key}"><img src="${this.getAttribute(
             key
