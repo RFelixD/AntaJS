@@ -59,41 +59,104 @@ export class Card extends Base {
     });
 
     const style = document.createElement("style");
-    style.textContent = `
-      :host {
-        display: block;
-        width: 100%;
-        margin: 0.1rem;
-        font-family: Arial, sans-serif;
-        font-size: 1rem;
-      }
-      .card {
-        border-radius: ${customAttribute.get("border-radius")};
-      }
-     .header {
-        background-color: ${this._1};
-        color: ${this.pure};
-        padding: 0.75rem;
-        border-radius: ${customAttribute.get(
-          "border-radius"
-        )} ${customAttribute.get("border-radius")} 0 0;
-     }
-    .body {
-        padding: 2px 4px
-    }
-    .footer{
-        background-color: ${this._1};
-        color: ${this.pure};
-        padding: 2px 4px;
-        border-radius: 0 0 ${customAttribute.get(
-          "border-radius"
-        )} ${customAttribute.get("border-radius")};
-     }
-    
-    }
 
+    switch (this.style_page) {
+      case "simple":
+        style.textContent = `
+            :host {
+              display: block;
+              width: 100%;
+              margin: 0.1rem;
+              font-family: Arial, sans-serif;
+              font-size: 1rem;
+            }
+            .header {
+                background-color: ${this._2};
+                color: ${this.pure};
+                padding: 0.65rem 0 0.65rem 1.25rem;
+                font-size: 1.25rem;
+            }
+            .body {
+                padding: 2px 4px
+            }
+            .footer{
+                background-color: ${this._2};
+                color: ${this.pure};
+                padding: 2px 4px;
+            }
+        `;
+
+        break;
+      case "minimalist":
+        style.textContent = `
+          :host {
+            display: block;
+            width: 100%;
+            margin: 0.1rem;
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+          }
+          .card {
+            border-radius: ${customAttribute.get("border-radius")};
+          }
+          .header {
+              background-color: ${this._1};
+              color: ${this.pure};
+              padding: 0.65rem 0 0.65rem 1.25rem;
+              border-radius: ${customAttribute.get(
+                "border-radius"
+              )} ${customAttribute.get("border-radius")} 0 0;
+              font-size: 1.25rem;
+          }
+          .body {
+              padding: 2px 4px
+          }
+          .footer{
+              background-color: ${this._1};
+              color: ${this.pure};
+              padding: 2px 4px;
+              border-radius: 0 0 ${customAttribute.get(
+                "border-radius"
+              )} ${customAttribute.get("border-radius")};
+          }
+        
     `;
-
+        break;
+      default:
+        style.textContent = `
+          :host {
+            display: block;
+            width: 100%;
+            margin: 0.1rem;
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+          }
+          .card {
+            border-radius: ${customAttribute.get("border-radius")};
+          }
+          .header {
+              background-color: ${this._1};
+              color: ${this.pure};
+              padding: 0.65rem 0 0.65rem 1.25rem;
+              border-radius: ${customAttribute.get(
+                "border-radius"
+              )} ${customAttribute.get("border-radius")} 0 0;
+              font-size: 1.25rem;
+          }
+          .body {
+              padding: 2px 4px
+          }
+          .footer{
+              background-color: ${this._1};
+              color: ${this.pure};
+              padding: 2px 4px;
+              border-radius: 0 0 ${customAttribute.get(
+                "border-radius"
+              )} ${customAttribute.get("border-radius")};
+          }
+        
+    `;
+    }
     shadow.appendChild(style);
     shadow.appendChild(card);
   }

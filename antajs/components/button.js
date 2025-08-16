@@ -20,12 +20,73 @@ export class Button extends Base {
     });
 
     const style = document.createElement("style");
+    const button_container = document.createElement("div");
     const button = document.createElement("button");
-
     button.textContent = customAttribute.get("text");
+    button_container.style.padding = "1rem 1rem";
+    button_container.appendChild(button);
     button.classList.add("b-button");
-    if (customAttribute.get("ui") == "primary") {
-      style.textContent = `
+    switch (this.style_page) {
+      case "simple":
+        if (customAttribute.get("ui") == "primary") {
+          style.textContent = `
+            button {
+              -webkit-tap-highlight-color: transparent;
+             }
+            :host {
+                display: block;
+                width: ${customAttribute.get("width")};
+                font-family: Arial, sans-serif;
+                font-size: 1rem;
+                text-align: center;
+            }
+            .primary {
+                padding: ${customAttribute.get("padding")};
+                background-color: ${this._1};
+                width: ${customAttribute.get("width")};
+                color: white;
+                border: none;
+                cursor: pointer;
+                transition: ${this.transition};
+            }
+            button:hover {
+                opacity: 0.7;
+            }
+        `;
+
+          button.classList.add("primary");
+        } else if (customAttribute.get("ui") == "secondary") {
+          style.textContent = `
+             button {
+              -webkit-tap-highlight-color: transparent;
+             }
+            :host {
+                display: block;
+                width: ${customAttribute.get("width")};
+                font-family: Arial, sans-serif;
+                font-size: 1rem;
+                text-align: center;
+            }
+            .secondary {
+                padding: ${customAttribute.get("padding")};
+                background-color: ${this.pure};
+                border: 1px solid ${this._1};
+                width: ${customAttribute.get("width")};
+                color: ${this.dark};
+                cursor: pointer;
+                transition: ${this.transition};
+            }
+            button:hover {
+                background-color: ${this._1};
+                color: ${this.pure};
+            }
+        `;
+          button.classList.add("secondary");
+        }
+        break;
+      case "minimalist":
+        if (customAttribute.get("ui") == "primary") {
+          style.textContent = `
             button {
               -webkit-tap-highlight-color: transparent;
              }
@@ -51,9 +112,9 @@ export class Button extends Base {
             }
         `;
 
-      button.classList.add("primary");
-    } else if (customAttribute.get("ui") == "secondary") {
-      style.textContent = `
+          button.classList.add("primary");
+        } else if (customAttribute.get("ui") == "secondary") {
+          style.textContent = `
              button {
               -webkit-tap-highlight-color: transparent;
              }
@@ -79,9 +140,69 @@ export class Button extends Base {
                 color: ${this.pure};
             }
         `;
-      button.classList.add("secondary");
+          button.classList.add("secondary");
+        }
+        break;
+      default:
+        if (customAttribute.get("ui") == "primary") {
+          style.textContent = `
+            button {
+              -webkit-tap-highlight-color: transparent;
+             }
+            :host {
+                display: block;
+                width: ${customAttribute.get("width")};
+                font-family: Arial, sans-serif;
+                font-size: 1rem;
+                text-align: center;
+            }
+            .primary {
+                padding: ${customAttribute.get("padding")};
+                background-color: ${this._1};
+                width: ${customAttribute.get("width")};
+                color: white;
+                border: none;
+                border-radius: ${this.borderRadius};
+                cursor: pointer;
+                transition: ${this.transition};
+            }
+            button:hover {
+                opacity: 0.7;
+            }
+        `;
+
+          button.classList.add("primary");
+        } else if (customAttribute.get("ui") == "secondary") {
+          style.textContent = `
+             button {
+              -webkit-tap-highlight-color: transparent;
+             }
+            :host {
+                display: block;
+                width: ${customAttribute.get("width")};
+                font-family: Arial, sans-serif;
+                font-size: 1rem;
+                text-align: center;
+            }
+            .secondary {
+                padding: ${customAttribute.get("padding")};
+                background-color: ${this.pure};
+                border: 1px solid ${this._1};
+                border-radius: ${this.borderRadius};
+                width: ${customAttribute.get("width")};
+                color: ${this.dark};
+                cursor: pointer;
+                transition: ${this.transition};
+            }
+            button:hover {
+                background-color: ${this._1};
+                color: ${this.pure};
+            }
+        `;
+          button.classList.add("secondary");
+        }
     }
     shadow.appendChild(style);
-    shadow.appendChild(button);
+    shadow.appendChild(button_container);
   }
 }

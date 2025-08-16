@@ -1,5 +1,7 @@
 let fetchData = null;
-await fetch("https://raw.githubusercontent.com/rfelixd/AntaJS/main/antajs/base.json")
+await fetch(
+  "https://raw.githubusercontent.com/rfelixd/AntaJS/main/antajs/base.json"
+)
   .then((response) => {
     if (!response.ok) {
       throw new Error(`error, status: ${response.status}`);
@@ -13,7 +15,9 @@ await fetch("https://raw.githubusercontent.com/rfelixd/AntaJS/main/antajs/base.j
     console.error("Error fetching config:", error);
   });
 let configData = null;
-await fetch("https://raw.githubusercontent.com/rfelixd/AntaJS/main/antajs/config.json")
+await fetch(
+  "https://raw.githubusercontent.com/rfelixd/AntaJS/main/antajs/config.json"
+)
   .then((response) => {
     if (!response.ok) {
       throw new Error(`error, status: ${response.status}`);
@@ -27,9 +31,9 @@ await fetch("https://raw.githubusercontent.com/rfelixd/AntaJS/main/antajs/config
     console.error("Error fetching config:", error);
   });
 
-let style = configData["style"];
+let style_page = configData["style"];
 let theme = configData["theme"];
-let baseStyle = fetchData[style];
+let baseStyle = fetchData[style_page];
 
 export class Base extends HTMLElement {
   constructor() {
@@ -51,6 +55,7 @@ export class Base extends HTMLElement {
     this.margin = baseStyle["margin"];
     this.borderRadius = baseStyle["border-radius"];
     this.transition = baseStyle["transition"];
+    this.style_page = style_page;
   }
   connectedCallback() {
     const shadow = this.attachShadow({ mode: "open" });
@@ -70,4 +75,3 @@ export class Base extends HTMLElement {
     base.appendChild(slots);
   }
 }
-
