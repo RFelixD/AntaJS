@@ -23,6 +23,7 @@ export class Button extends Base {
     const button = document.createElement("button");
 
     button.textContent = customAttribute.get("text");
+    button.classList.add("b-button");
     if (customAttribute.get("ui") == "primary") {
       style.textContent = `
             button {
