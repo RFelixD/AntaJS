@@ -23,7 +23,7 @@ export class Button extends Base {
     const button_container = document.createElement("div");
     const button = document.createElement("button");
     button.textContent = customAttribute.get("text");
-    button_container.style.padding = "1rem 1rem";
+    button_container.style.padding = "0.5rem 0.5rem";
     button_container.appendChild(button);
     button.classList.add("b-button");
     switch (this.style_page) {
