@@ -1,3 +1,7 @@
+class Config{
+
+}
+
 import { Base } from "./components/base.js";
 import { Card } from "./components/card.js";
 import { Grid, Cell } from "../antajs/layout/grid.js";
