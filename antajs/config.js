@@ -14,9 +14,10 @@ export class AntaJS extends Base {
     this.setStyle("simple");
     /* 
         Theme available:
-        simple and minimalist -> sea / windy / nature / sunny / dark
-        playful -> sunny
-        formal -> light / dark
+        simple      : sea / windy / nature / sunny / dark
+        minimalist  : sea / windy / nature / sunny / dark
+        playful     : sunny
+        formal      : light / dark
     */
     this.setTheme("sea");
   }
