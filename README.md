@@ -15,11 +15,11 @@ Edit your web configuration in config.json (don't edit base.json unless you know
 in file index.html
 ```html
 <!-- Making card -->
-<c-card>
+<x-card>
   <!-- This html code will place in the body of card -->
   <h2> Wow, this is amazing</h2>
   <p> You should try AntaJS </p>
-</c-card>
+</x-card>
 ```
 > AI support for create website consistent (coming soon)
 

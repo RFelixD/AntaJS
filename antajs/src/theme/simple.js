@@ -1,6 +1,8 @@
 export const simple = {
-  colorSet: {
+  style: "simple",
+  theme: {
     sea: {
+      0: "sea",
       1: "#2b7fff",
       2: "#51a2ff",
       3: "#8ec5ff",
@@ -9,6 +11,7 @@ export const simple = {
       dark: "#1c398e",
     },
     windy: {
+      0: "windy",
       1: "#00a6f4",
       2: "#00bcff",
       3: "#74d4ff",
@@ -43,6 +46,15 @@ export const simple = {
         padding: "1rem",
       },
     },
-    button: {},
+    button: {
+      host: {
+        margin: "0.5rem",
+      },
+      button: {
+        padding: "0.5rem 1rem",
+        fontSize: "1rem",
+        fontFamily: "Arial",
+      },
+    },
   },
 };
